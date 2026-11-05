@@ -1,7 +1,7 @@
 packer {
   required_plugins {
     amazon = {
-      version = ">= 1.3.1"
+      version = ">= 1.8.0"
       source  = "github.com/hashicorp/amazon"
     }
   }
@@ -13,14 +13,15 @@ data "amazon-ami" "amazon-linux" {
   }
   owners      = ["amazon"]
   most_recent = true
-  region      = "us-east-2"
+  region      = "ap-southeast-2"
+  profile     = "dat-405398623290"
 }
 
 source "amazon-ebs" "amazon-linux" {                  
   ami_name        = "sample-app-packer-${uuidv4()}"
   ami_description = "Amazon Linux AMI with a Node.js sample app."
   instance_type   = "t2.micro"
-  region          = "us-east-2"
+  region          = "ap-southeast-2"
   source_ami      = data.amazon-ami.amazon-linux.id
   ssh_username    = "ec2-user"
 }
