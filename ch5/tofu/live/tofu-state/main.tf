@@ -1,5 +1,6 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "ap-southeast-2"
+  profile = "dat-405398623290"
 }
 
 module "state" {
