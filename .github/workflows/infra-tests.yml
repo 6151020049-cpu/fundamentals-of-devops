@@ -1,6 +1,9 @@
 name: Infrastructure Tests
 
-on: push
+on: 
+  push:
+    branches: ["main"]
+    paths: ["ch5/tofu/live/lambda-sample/**"]
 
 jobs:
   opentofu_test:
