@@ -21,7 +21,7 @@ module "iam_roles" {
   enable_iam_role_for_testing = true                            
 
   # TODO: fill in your own repo name here!
-  github_repo      = "6151020049-cpu/fundamentals-of-devops" 
+  github_repo      = "6151020049-cpu@283092221/fundamentals-of-devops@1431913289" 
   lambda_base_name = "lambda-sample"                            
 
   enable_iam_role_for_plan  = true                                
