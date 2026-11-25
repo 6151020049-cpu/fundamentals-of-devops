@@ -1,6 +1,5 @@
 provider "aws" {
   region = "ap-southeast-2"
-  profile = "dat-405398623290"
 }
 
 module "function" {
