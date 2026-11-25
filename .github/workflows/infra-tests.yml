@@ -15,6 +15,40 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+
+      - name: Debug GitHub OIDC claims
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          response=$(curl -sS \
+            -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=sts.amazonaws.com")
+
+          token=$(echo "$response" | jq -r '.value')
+
+          TOKEN="$token" python3 - <<'PY'
+          import os
+          import json
+          import base64
+
+          token = os.environ["TOKEN"]
+          payload = token.split(".")[1]
+
+          payload += "=" * (-len(payload) % 4)
+
+          claims = json.loads(
+              base64.urlsafe_b64decode(payload)
+          )
+
+          for key in ["iss", "aud", "sub", "repository", "ref"]:
+              print(f"{key}: {claims.get(key)}")
+          PY
+
+          echo "GitHub repository: $GITHUB_REPOSITORY"
+          echo "GitHub ref: $GITHUB_REF"
+          echo "GitHub event: $GITHUB_EVENT_NAME"
+
       - uses: aws-actions/configure-aws-credentials@v3                          
         with:
           # TODO: fill in your IAM role ARN!
