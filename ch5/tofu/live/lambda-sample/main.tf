@@ -3,8 +3,8 @@ provider "aws" {
 }
 
 module "function" {
-  source  = "6151020049-cpu/devops/book//modules/lambda"
-  version = "1.0.0"
+  source  = "git::https://github.com/6151020049-cpu/devops-book.git//ch3/tofu/modules/lambda?ref=main"
+
 
   name = var.name
 
