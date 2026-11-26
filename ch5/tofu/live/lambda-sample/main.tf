@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "function" {
-  source  = "brikis98/devops/book//modules/lambda"
+  source  = "6151020049-cpu/devops/book//modules/lambda"
   version = "1.0.0"
 
   name = var.name
