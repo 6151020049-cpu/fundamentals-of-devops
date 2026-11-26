@@ -56,7 +56,16 @@ jobs:
           role-session-name: tests-${{ github.run_number }}-${{ github.actor }} 
           aws-region: ap-southeast-2
 
-      - uses: opentofu/setup-opentofu@v1                                        
+      - uses: opentofu/setup-opentofu@v1
+
+      - name: Tofu Upgrade
+        env:
+          TF_VAR_name: lambda-sample-${{ github.run_id }}
+        working-directory: ch5/tofu/live/lambda-sample
+        run:
+          tofu init -backend=false -input=false
+          tofu init -upgrade
+          tofu init -reconfigure        
 
       - name: Tofu Test
         env:
