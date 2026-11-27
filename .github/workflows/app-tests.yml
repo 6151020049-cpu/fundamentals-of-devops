@@ -1,6 +1,10 @@
 name: Sample App Tests
 
-on: push                                  
+on: 
+  push:
+    branches: ["main"]
+    paths:
+      - "ch5/sample-app/**"                                 
 
 jobs:                                     
   sample_app_tests:                       
