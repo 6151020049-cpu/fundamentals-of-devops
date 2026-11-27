@@ -19,7 +19,7 @@ jobs:
           # TODO: fill in your IAM role ARN!
           role-to-assume: arn:aws:iam::405398623290:role/lambda-sample-apply 
           role-session-name: apply-${{ github.run_number }}-${{ github.actor }}
-          aws-region: us-east-2
+          aws-region: ap-southeast-2
 
       - uses: opentofu/setup-opentofu@v1
 
