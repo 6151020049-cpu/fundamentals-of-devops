@@ -75,9 +75,6 @@ jobs:
       - name: Initialize OpenTofu
         run: tofu init -backend=false -input=false
 
-      - name: Show installed providers
-        run: tofu providers
-
       - name: Tofu Test
         run: tofu test -verbose                                                               
 
