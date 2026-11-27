@@ -1,6 +1,5 @@
 terraform {
   backend "s3" {
-    profile        = "dat-405398623290"
     # TODO: fill in your own bucket name here!
     bucket         = "bucket1-405398623290-ap-southeast-2-an"             
     key            = "ch5/tofu/live/lambda-sample/terraform.tfstate" 
